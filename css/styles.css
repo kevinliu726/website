@@ -1509,6 +1509,7 @@ hr.fancy::before {
     font-family: var(--font-1);
     font-size  : var(--text-md);
     line-height: var(--vspace-1_25);
+    text-align: justify;
 }
 
 @media screen and (max-width: 800px) {
@@ -2721,7 +2722,7 @@ td:last-child {
 .section-header {
     display      : flex;
     align-items  : flex-start;
-    margin-bottom: var(--vspace-3_5);
+    margin-bottom: var(--vspace-2_5);
     position     : relative;
 }
 
@@ -3874,7 +3875,7 @@ td:last-child {
  *
  * ------------------------------------------------------------------- */
 .s-about {
-    padding-top: var(--vspace-7);
+    padding-top: var(--vspace-4);
     color      : var(--color-3);
 }
 
@@ -3917,6 +3918,10 @@ td:last-child {
     font-weight  : 500;
     margin-bottom: var(--vspace-0_625);
     padding-left : 0;
+    overflow: hidden; /* Ensures content does not overflow */
+    text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+    white-space: normal; /* Prevents text wrapping if desired */
+    max-width: 400px; 
 }
 
 .s-about__list span {
@@ -3950,17 +3955,20 @@ td:last-child {
 
 .folio-entries {
     --width-grid-max: 1400px;
-    margin-top      : var(--vspace-0_5);
+    margin-top: var(--vspace-0_5);
+    display: flex; /* Ensure the container is a flex container */
+    flex-wrap: wrap; /* Allow wrapping of entries */
+    gap: 10px; 
 }
 
 /* ------------------------------------------------------------------- 
  * ## folio entries 
  * ------------------------------------------------------------------- */
 .folio-entries .entry {
-    flex    : none;
-    width   : 50%;
-    margin  : 0;
-    padding : 0;
+    flex: none;
+    width: calc(50% - 10px); /* Subtract gap to maintain layout */
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     position: relative;
 }
@@ -3973,7 +3981,7 @@ td:last-child {
 .folio-entries .entry__link img {
     vertical-align: bottom;
     transition    : all 0.3s ease-in-out;
-    margin        : 0;
+    margin        : 10px;
 }
 
 .folio-entries .entry__link::before {
@@ -4032,6 +4040,7 @@ td:last-child {
 .folio-entries .entry:hover .entry__link::before {
     opacity   : 1;
     visibility: visible;
+    margin        : 10px;
 }
 
 .folio-entries .entry:focus .entry__info,
